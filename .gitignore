@@ -1,2 +1,3 @@
 # Project exclude paths
 /sharding-jdbc-example/target/
+/.idea
