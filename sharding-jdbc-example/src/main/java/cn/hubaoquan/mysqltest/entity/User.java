@@ -1,9 +1,6 @@
 package cn.hubaoquan.mysqltest.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
@@ -11,6 +8,8 @@ import java.io.Serializable;
 public class User implements Serializable {
     @Id
     @Column(name = "id")
+    //主键策略设置为IDENTITY，为了让sharding自动生成主键
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     @Column(name = "name")
     private String name;

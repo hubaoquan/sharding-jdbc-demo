@@ -18,7 +18,7 @@ public class TestSharding {
     @Test
     //@Transactional(dontRollbackOn = RuntimeException.class)
     public void testAdd() {
-        for (int i = 1; i < 20; i++) {
+        for (int i = 1; i < 100; i++) {
             User user = new User();
             user.setId(i);
             user.setName("胡宝全" + i);
