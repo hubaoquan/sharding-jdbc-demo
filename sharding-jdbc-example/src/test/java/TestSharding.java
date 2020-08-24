@@ -1,6 +1,8 @@
 import cn.hubaoquan.mysqltest.RunBoot;
+import cn.hubaoquan.mysqltest.entity.Order;
 import cn.hubaoquan.mysqltest.entity.User;
 import cn.hubaoquan.mysqltest.entity.UserDetail;
+import cn.hubaoquan.mysqltest.repository.OrderRepository;
 import cn.hubaoquan.mysqltest.repository.UserDetailRepository;
 import cn.hubaoquan.mysqltest.repository.UserRepository;
 import org.junit.Test;
@@ -19,6 +21,9 @@ public class TestSharding {
     @Resource
     private UserDetailRepository userDetailRepository;
 
+    @Resource
+    private OrderRepository orderRepository;
+
     @Test
     //@Transactional(dontRollbackOn = RuntimeException.class)
     public void testAdd() {
@@ -32,16 +37,21 @@ public class TestSharding {
 
             UserDetail userDetail = new UserDetail();
             userDetail.setUserid(user.getId());
-            userDetail.setCompany("公司"+i);
+            userDetail.setCompany("公司" + i);
             userDetail.setSalary(1000.0 + i);
             userDetailRepository.save(userDetail);
+
+            Order order = new Order();
+            order.setUser_id(user.getId());
+            order.setTotal(100.0 + i);
+            orderRepository.save(order);
 
         }
     }
     @Test
     public void testGet() {
-        Object o= userRepository.getUserById(144820270752226L);
-        Object[]  objects= (Object[]) o;
+        Object o = userRepository.getUserById(79642280099672L);
+        Object[] objects = (Object[]) o;
         for (Object o1:objects)
             System.out.println(o1);
     }
