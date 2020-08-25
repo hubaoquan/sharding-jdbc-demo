@@ -48,11 +48,24 @@ public class TestSharding {
 
         }
     }
+
     @Test
-    public void testGet() {
-        Object o = userRepository.getUserById(79642280099672L);
-        Object[] objects = (Object[]) o;
-        for (Object o1:objects)
-            System.out.println(o1);
+    public void getUserAndDetailById() {
+        Object o = userRepository.getUserAndDetailById(504960791829544960L);
+        if (o != null) {
+            Object[] objects = (Object[]) o;
+            for (Object o1 : objects)
+                System.out.println(o1);
+        }
+    }
+
+    @Test
+    public void getUserAndDetailAndOrderByUserId() {
+        Object o = userRepository.getUserAndDetailAndOrderByUserId(504960791829544960L);
+        if (o != null) {
+            Object[] objects = (Object[]) o;
+            for (Object o1 : objects)
+                System.out.println(o1);
+        }
     }
 }
